@@ -77,10 +77,32 @@
                                     <!-- Main-menu -->
                                     <div class="authentication d-none d-lg-block">
                                         <nav>
+                                            @guest
                                             <ul id="navigation" style="float: none;">
                                                 <li><a href="{{route('login')}}" style="color : #09cc7f; padding-right: 10px;">MASUK</a></li>
                                                 <li><a href="{{route('register')}}" class="button_outline" style="color : #09cc7f;">DAFTAR</a></li>
                                             </ul>
+                                            @else
+                                               <ul>
+                                                <li class="nav-item dropdown">
+                                                    <a style="color:#000 !important;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                        {{ Auth::user()->name }}
+                                                    </a>
+                    
+                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                                           onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();">
+                                                            {{ __('Logout') }}
+                                                        </a>
+                    
+                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                            @csrf
+                                                        </form>
+                                                    </div>
+                                                </li>
+                                               </ul>
+                                            @endguest
                                         </nav>
                                     </div>
                                 </div>
@@ -189,7 +211,7 @@
                                 <img src="assets/img/aksi/sampah_aksi.png" alt="">
                             </div>
                             <div class="cat-cap">
-                                <h5><a href="{{route('sungai')}}">Pembersihan Sungai</a></h5>
+                                <h5><a href="">Pembersihan Sungai</a></h5>
                             </div>
                         </div>
                     </div>

@@ -42,6 +42,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang Kembali!</h1>
                                     </div>
                                     <form class="user" action="{{route('login')}}" enctype="multipart/form-data" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <input type="email" name="email" class="form-control form-control-user @error('email') is-invalid @enderror"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
